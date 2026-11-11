@@ -51,6 +51,32 @@ The hybrid recommendation engine combines four components:
 
 The final recommendation score is a ranking score, not a probability.
 
+## System Architecture
+flowchart TD
+    A["User"] --> B["React Frontend"]
+    B --> C["Flask Backend API"]
+
+    C --> D["Hybrid Recommendation Engine"]
+
+    D --> E["Content-Based Filtering"]
+    D --> F["User-Based Collaborative Filtering"]
+    D --> G["SVD Model"]
+    D --> H["Popularity-Based Model"]
+
+    E --> I["Hybrid Scoring & Ranking"]
+    F --> I
+    G --> I
+    H --> I
+
+    I --> J["Recommended Movies"]
+
+    C <--> K[("MySQL Database")]
+    C --> L["TMDB API"]
+    L --> M["Movie Posters"]
+
+    J --> B
+    M --> B
+
 ## 🛠️ Technologies Used
 
 ### Machine Learning and Data Analysis
